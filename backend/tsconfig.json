@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es2022", // modern JS features
+    "module": "nodenext", // Node ESM + CJS aware
+    "moduleResolution": "nodenext", // inferred automatically; explicit is optional
+    "outDir": "dist", // compiled JS output
+    "rootDir": "src", // TS source root
+    "strict": true, // enable all strict checks
+    "esModuleInterop": true, // for default imports from CJS packages
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true, // allow importing JSON
+    "allowSyntheticDefaultImports": true,
+    "noEmitOnError": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

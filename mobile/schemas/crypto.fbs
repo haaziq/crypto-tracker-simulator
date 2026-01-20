@@ -1,0 +1,25 @@
+// schemas/crypto.fbs
+namespace CryptoDashboard;
+
+// Single cryptocurrency data point
+table Crypto {
+  symbol: string (required);
+  name: string (required);
+  price: float;
+  price_change_24h: float;
+  market_cap: double;
+  volume_24h: double;
+  high_24h: float;
+  low_24h: float;
+  last_updated: uint64;    // Unix timestamp in milliseconds
+}
+
+// The complete world state sent each frame
+table WorldState {
+  cryptos: [Crypto];       // Array of all crypto data
+  frame_id: uint64;        // Incrementing frame counter
+  timestamp: uint64;       // Server timestamp when sent
+  total_cryptos: uint32;   // Total count for validation
+}
+
+root_type WorldState;

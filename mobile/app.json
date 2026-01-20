@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "crypto-tracker",
+    "slug": "crypto-tracker",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourname.crypto-tracker",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "websocketUrl": "ws://localhost:8099",
+      "performanceTargets": {
+        "maxLatencyP99": 300,
+        "maxCommandLatency": 100,
+        "minFrameRate": 60,
+        "maxDeserializeTime": 10
+      },
+      "env": "development",
+      "eas": {
+        "projectId": "74ea4636-737d-44e9-8fee-59f63c09604a"
+      }
+    },
+    "owner": "haaziq"
+  }
+}
