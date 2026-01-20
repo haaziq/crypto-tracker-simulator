@@ -1,6 +1,6 @@
 # 🚀 Real-Time Crypto Dashboard
 
-A high-performance cryptocurrency price tracker built with React Native and Node.js, featuring real-time WebSocket data streaming with binary serialization (FlatBuffers). This project demonstrates production-grade architecture patterns for real-time data applications.
+A high-performance cryptocurrency price tracker built with React Native and Node.js, featuring real-time WebSocket data streaming with binary serialization (FlatBuffers). Uses simulated price data to demonstrate production-grade architecture patterns for real-time data applications.
 
 ![Performance Targets](https://img.shields.io/badge/Latency%20P99-<300ms-success)
 ![Frame Rate](https://img.shields.io/badge/Frame%20Rate-60fps-success)
@@ -62,14 +62,14 @@ A high-performance cryptocurrency price tracker built with React Native and Node
 | **TypeScript** | Type-safe server code |
 | **ws** | WebSocket server implementation |
 | **FlatBuffers** | Binary serialization (Node.js) |
-| **CoinGecko API** | Live cryptocurrency price data |
+| **Simulated Data** | Realistic crypto price simulation |
 
 ## 🏗 Architecture
 
 ### Data Flow
 
 ```
-CoinGecko API
+Simulated Price Generator
     ↓
 Backend Service (Plain Objects)
     ↓
@@ -164,13 +164,12 @@ npm run gen-schema
 npm run type-check
 ```
 
-**Configuration:**
+**Configuration (Optional):**
 
-Create `.env` file in `backend/` directory:
+Create `.env` file in `backend/` directory if you want to customize the port:
 
 ```env
-PORT=8080
-COINGECKO_API_KEY=your_api_key_here  # Optional, use for higher rate limits
+PORT=8080  # Default is 8080, change if needed
 ```
 
 ### 3. Mobile App Setup
@@ -218,9 +217,14 @@ npm start
 
 **Expected output:**
 ```
-WebSocket server started on ws://localhost:8080
-Fetched 50 cryptocurrencies from CoinGecko
-Streaming at 10 Hz
+==================================================
+Crypto WebSocket Server
+==================================================
+CryptoDataService: Starting with simulated data...
+CryptoDataService: Tracking 15 cryptocurrencies
+Server running on ws://localhost:8080
+Default update frequency: 10Hz
+Waiting for connections...
 ```
 
 ### Start Mobile App
@@ -327,7 +331,7 @@ crypto-dashboard/
 │   ├── src/
 │   │   ├── server.ts          # Main server entry point
 │   │   ├── services/
-│   │   │   └── CryptoDataService.ts  # CoinGecko API integration
+│   │   │   └── CryptoDataService.ts  # Simulated price data generator
 │   │   ├── utils/
 │   │   │   └── FlatBuffersAdapter.ts # Binary serialization
 │   │   ├── types/
@@ -376,6 +380,15 @@ crypto-dashboard/
 ```
 
 ## 💡 Key Concepts
+
+### Simulated Price Data
+
+**How it works:**
+- **Base prices** set for 15 popular cryptocurrencies
+- **Price updates** every second with ±1% gradual changes
+- **Micro-variations** (±0.05%) added during streaming for smooth real-time feel
+- **Realistic metrics** including 24h high/low, volume, market cap
+- **No external API** required - perfect for testing and development
 
 ### FlatBuffers Binary Serialization
 
@@ -482,9 +495,10 @@ lsof -ti:8080 | xargs kill -9
 PORT=8081
 ```
 
-**Error: CoinGecko API rate limit**
-- Free tier: 10-30 calls/minute
-- Solution: Add delays or get API key from coingecko.com
+**Simulated Data Notes**
+- Prices update every second with realistic market movements
+- Micro-variations added during streaming (10-30Hz) for smooth updates
+- 15 cryptocurrencies tracked by default (BTC, ETH, SOL, etc.)
 
 ### Mobile App Issues
 
